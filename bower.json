@@ -1,0 +1,24 @@
+{
+  "name": "space-defense",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Kevin Isom <kevin.isom@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "Private",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser-official": "~2.0.5",
+    "phaser-plugins": "*"
+  }
+}
