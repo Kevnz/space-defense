@@ -26,7 +26,7 @@ gulp.task('bower-install', function(){
 gulp.task('browserify-dev', function () {
  
     return browserify({ entries:['./public/js/game.js'] })
-        //.transform('es6ify')
+        .transform('es6ify')
         .bundle({ debug: true})
         .on('error', function () {
             console.log('browserify error');

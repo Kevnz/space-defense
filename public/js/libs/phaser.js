@@ -9378,7 +9378,7 @@ PIXI.Texture.prototype.setFrame = function(frame)
     this.width = frame.width;
     this.height = frame.height;
 
-    if(frame.x + frame.width > this.baseTexture.width || frame.y + frame.height > this.baseTexture.height)
+    if(frame.x + frame.width > (this.baseTexture.width*2) || frame.y + frame.height > this.baseTexture.height)
     {
         throw new Error('Texture Error: frame does not fit inside the base Texture dimensions ' + this);
     }
@@ -44377,7 +44377,7 @@ Phaser.Loader.prototype = {
     * @return {Phaser.Loader} This Loader instance.
     */
     atlasJSONArray: function (key, textureURL, atlasURL, atlasData) {
-
+console.log('atlasJSONArray')
         return this.atlas(key, textureURL, atlasURL, atlasData, Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 
     },
@@ -44393,7 +44393,7 @@ Phaser.Loader.prototype = {
     * @return {Phaser.Loader} This Loader instance.
     */
     atlasJSONHash: function (key, textureURL, atlasURL, atlasData) {
-
+        console.log('atlasJSONHash')
         return this.atlas(key, textureURL, atlasURL, atlasData, Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
     },
