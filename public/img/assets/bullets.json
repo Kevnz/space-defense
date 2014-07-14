@@ -2,7 +2,7 @@
 
 {
 	"filename": "bullet-blue.png",
-	"frame": {"x":0,"y":0,"w":117,"h":39},
+	"frame": {"x":0,"y":0,"w":39,"h":39},
 	"rotated": true,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":39},
