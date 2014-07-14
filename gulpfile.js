@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     bower = require('gulp-bower'),
-    browserify = require('browserify');
+    browserify = require('browserify'),
+    livereload = require('gulp-livereload');
 
 var source = require('vinyl-source-stream');
 gulp.task('bower-phaser',function (){
@@ -41,7 +42,7 @@ gulp.task('browserify-dev', function () {
 
 gulp.task('browserify-prod', function () {
  
-    return browserify({entries:['./public/js/game.js'],  
+    return browserify({ entries:['./public/js/game.js']
         })
         .transform('es6ify')
         .transform('stripify')
@@ -61,6 +62,8 @@ gulp.task('browserify-prod', function () {
 
 
 gulp.task('watch', function() {
-  gulp.watch(['./public/js/game/*.js', './public/js/game/**/*.js'], ['browserify-dev','browserify-prod']);
-  //gulp.watch(paths.images, ['images']);
+    livereload.listen();
+    gulp.watch(['./public/js/game.js','./public/js/game/*.js', './public/js/game/**/*.js'], ['browserify-dev','browserify-prod'])
+        .on('change', livereload.changed);
+    //gulp.watch(paths.images, ['images']);
 });

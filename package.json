@@ -21,6 +21,7 @@
     "gulp-bower": "0.0.6",
     "gulp-espower": "^0.7.1",
     "gulp-jshint": "^1.6.4",
+    "gulp-livereload": "^2.1.0",
     "gulp-mocha": "^0.4.1",
     "gulp-uglify": "^0.3.1",
     "power-assert": "^0.7.2",
