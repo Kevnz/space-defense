@@ -4,9 +4,17 @@
 
 }
 ;
+function setupEnemy (enemy) {
+
+    enemy.anchor.x = 0.5;
+    enemy.anchor.y = 0.5;
+    enemy.animations.add('explode');
+
+};
+
 module.exports =    function(){
-    console.log(this);
-game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.spaceBG =  this.add.tileSprite(0, 0, 800, 600, 'bg');  
     this.spaceBG.autoScroll(0, 75); 
@@ -30,6 +38,24 @@ game.physics.startSystem(Phaser.Physics.ARCADE);
     bullets.setAll('anchor.y', 1);
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
+
+    window.aliens = game.add.group();
+    aliens.enableBody = true;
+    aliens.physicsBodyType = Phaser.Physics.ARCADE;
+
+    window.explosions = game.add.group();
+    explosions.createMultiple(30, 'explode');
+    explosions.forEach(setupEnemy, this);
+
+    var spawn = function () {
+    console.log('spawn');
+    var x = game.rnd.integerInRange(40, 600)  , y = game.rnd.integerInRange(40, 300);
+            var _alien = aliens.create(x, y, 'enemy');
+            _alien.anchor.setTo(0.5, 0.5);
+ 
+            _alien.body.moves = false;
+    };
+    game.time.events.repeat(Phaser.Timer.SECOND * 2, 25, spawn, this);
 }
 
  

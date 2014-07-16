@@ -10,7 +10,10 @@ console.log(arguments);
     //  When a bullet hits an alien we kill them both
     bullet.kill();
     alien.kill();
-
+var x = alien.body.x, y =alien.body.y
+    var explosion = explosions.getFirstExists(false);
+    explosion.reset(alien.body.x, alien.body.y);
+    explosion.play('explode', 30, false, true);
     //  Increase the score
    // score += 20;
     //scoreText.text = scoreString + score;
@@ -32,13 +35,16 @@ console.log(arguments);
         //the "click to restart" handler
       //  game.input.onTap.addOnce(restart,this);
     //}
+
+    //game.add.sprite((400 - 16), 10, 'atlas');
+    //ef.frameName = "bad-guy1.png";
 };
+
 
 module.exports =  function () {
     var bullets = window.bullets;
     var right_bulletTime = 0, left_bulletTime = 0; 
- 
-    var game = window.game;
+    
     var cursors = window.cursors; 
 
         function fireBullet () { 
@@ -104,4 +110,5 @@ module.exports =  function () {
         }
         //console.log(cursors);
          game.physics.arcade.overlap(bullets, ef, collisionHandler, null, this);
-}
+         game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
+};
