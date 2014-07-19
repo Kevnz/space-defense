@@ -10,6 +10,7 @@ console.log(arguments);
     //  When a bullet hits an alien we kill them both
     bullet.kill();
     alien.kill();
+    window.boom.play();
 var x = alien.body.x, y =alien.body.y
     var explosion = explosions.getFirstExists(false);
     explosion.reset(alien.body.x, alien.body.y);
@@ -38,12 +39,12 @@ var x = alien.body.x, y =alien.body.y
 
     //game.add.sprite((400 - 16), 10, 'atlas');
     //ef.frameName = "bad-guy1.png";
-};
-
+}; 
+ var right_bulletTime = 0, left_bulletTime = 0; 
 
 module.exports =  function () {
     var bullets = window.bullets;
-    var right_bulletTime = 0, left_bulletTime = 0; 
+
     
     var cursors = window.cursors; 
 
@@ -56,10 +57,11 @@ module.exports =  function () {
                     //  And fire it
                     right_bullet.reset(player.x, player.y + 16);
                     right_bullet.body.velocity.y = -300;
-                    right_bulletTime = game.time.now + 200;
+                    right_bulletTime = game.time.now + 1000;
+                    lazer.play();
                 }
             }
-            if ( game.time.now > left_bulletTime)
+            if ( game.time.now > left_bulletTime + 20)
             {
                 var left_bullet = bullets.getFirstExists(false);
                 if (left_bullet)
@@ -67,7 +69,8 @@ module.exports =  function () {
                     //  And fire it
                     left_bullet.reset(player.x + 26, player.y + 16);
                     left_bullet.body.velocity.y = -300;
-                    left_bulletTime = game.time.now + 200;
+                    left_bulletTime = game.time.now + 1000;
+                    lazer.play();
                 }
             }
         }
