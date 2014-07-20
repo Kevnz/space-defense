@@ -8,10 +8,10 @@ var router = new director.http.Router({
     '/': {
       get: index
     },
-    '/img/enemy-fighters/sheet.json': {
+    '/sheets/enemy-fighters': {
       get: fighters
     },
-    '/img/assets/bullets.json': {
+    '/sheets/bullets': {
       get: bullets
     }
 }).configure({notfound: noRoute});

@@ -18,6 +18,31 @@ module.exports =    function(){
 
     this.spaceBG =  this.add.tileSprite(0, 0, 800, 600, 'bg');  
     this.spaceBG.autoScroll(0, 75); 
+    var GameController = require('game-controller');
+GameController.init({
+        left: {
+            type: 'joystick',
+            joystick: {
+                touchStart: function() {
+                    // Don't need this, but the event is here if you want it.
+                },
+                touchMove: function(joystick_details) {
+                    game.input.joystickLeft = joystick_details;
+                },
+                touchEnd: function() {
+                    game.input.joystickLeft = null;
+                }
+            }
+        },
+        right: {
+            // We're not using anything on the right for this demo, but you can add buttons, etc.
+            // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
+            type: 'none'
+        }
+    });
+
+
+
 
 
     window.player = require('./player')(game);
