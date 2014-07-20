@@ -9,4 +9,5 @@ module.exports =  function () {
     this.load.audio('boom', ['audio/effects/explode.wav']);
     this.load.audio('lazer', ['audio/effects/lazer.wav']);
     this.load.audio('stage-1', ['audio/background/stage-1.mp3', 'audio/background/stage-1.ogg']);
+
 }
