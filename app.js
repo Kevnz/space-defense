@@ -2,10 +2,17 @@ var http = require('http'),
     director = require('director');
 var index = require('./lib/home');
 var noRoute = require('./lib/static-files');
-
+var fighters = require('./lib/fighters');
+var bullets = require('./lib/bullets');
 var router = new director.http.Router({
     '/': {
       get: index
+    },
+    '/img/enemy-fighters/sheet.json': {
+      get: fighters
+    },
+    '/img/assets/bullets.json': {
+      get: bullets
     }
 }).configure({notfound: noRoute});
 
