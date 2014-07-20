@@ -18,8 +18,9 @@ module.exports =    function(){
 
     this.spaceBG =  this.add.tileSprite(0, 0, 800, 600, 'bg');  
     this.spaceBG.autoScroll(0, 75); 
-    var GameController = require('game-controller');
-GameController.init({
+    var GameController = window.GameController = require('game-controller').GameController;
+    console.log(GameController);
+    GameController.init({
         left: {
             type: 'joystick',
             joystick: {
@@ -27,10 +28,10 @@ GameController.init({
                     // Don't need this, but the event is here if you want it.
                 },
                 touchMove: function(joystick_details) {
-                    game.input.joystickLeft = joystick_details;
+                    //game.input.joystickLeft = joystick_details;
                 },
                 touchEnd: function() {
-                    game.input.joystickLeft = null;
+                    //game.input.joystickLeft = null;
                 }
             }
         },
@@ -40,10 +41,6 @@ GameController.init({
             type: 'none'
         }
     });
-
-
-
-
 
     window.player = require('./player')(game);
     player.init();
