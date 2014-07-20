@@ -1,6 +1,8 @@
 module.exports = function (game) {
 	var player, cursors;
 	var right_bulletTime = 0, left_bulletTime = 0; 
+    var playerSpeed = 200; //dunno
+
         function fireBullet () { 
             if ( game.time.now > right_bulletTime)
             {
@@ -35,7 +37,7 @@ module.exports = function (game) {
     		cursors =  game.input.keyboard.createCursorKeys();
 		},
 		update: function () {
-        //  For example this checks if the up or down keys are pressed and moves the camera accordingly.
+            //KEYBOARD MOVEMENT
 	        if (cursors.up.isDown)
 	        {
 	            //  If the shift key is also pressed then the world is rotated
@@ -71,6 +73,17 @@ module.exports = function (game) {
 	        {
 	            fireBullet() ;
 	        }
+
+
+            //GAMEPAD SUPPORT
+            if (game.input.joystickLeft) {
+                // Move the ufo using the joystick's normalizedX and Y values,
+                // which range from -1 to 1.
+                player.body.velocity.setTo(game.input.joystickLeft.normalizedX * 200, game.input.joystickLeft.normalizedY * playerSpeed * -1);
+            }
+            else {
+                player.body.velocity.setTo(0, 0);
+            }
 		}
 	}
 }
