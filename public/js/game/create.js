@@ -18,6 +18,14 @@ module.exports =    function(){
 
     this.spaceBG =  this.add.tileSprite(0, 0, 800, 600, 'bg');  
     this.spaceBG.autoScroll(0, 75); 
+
+
+    game.input.gamepad.start();
+
+    // To listen to buttons from a specific pad listen directly on that pad game.input.gamepad.padX, where X = pad 1-4
+    pad1 = game.input.gamepad.pad1;
+
+    
     var GameController = window.GameController = require('game-controller').GameController;
     console.log(GameController);
     GameController.init({
@@ -28,10 +36,10 @@ module.exports =    function(){
                     // Don't need this, but the event is here if you want it.
                 },
                 touchMove: function(joystick_details) {
-                    //game.input.joystickLeft = joystick_details;
+                    game.input.joystickLeft = joystick_details;
                 },
                 touchEnd: function() {
-                    //game.input.joystickLeft = null;
+                    game.input.joystickLeft = null;
                 }
             }
         },
