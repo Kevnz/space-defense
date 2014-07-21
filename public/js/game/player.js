@@ -13,7 +13,7 @@ module.exports = function (game) {
                     right_bullet.reset(player.x, player.y + 16);
                     right_bullet.body.velocity.y = -300;
                     right_bulletTime = game.time.now + 1000;
-                    lazer.play();
+                    //lazer.play();
                 }
             }
             if ( game.time.now > left_bulletTime + 20)
@@ -25,7 +25,7 @@ module.exports = function (game) {
                     left_bullet.reset(player.x + 26, player.y + 16);
                     left_bullet.body.velocity.y = -300;
                     left_bulletTime = game.time.now + 1000;
-                    lazer.play();
+                    //lazer.play();
                 }
             }
         }

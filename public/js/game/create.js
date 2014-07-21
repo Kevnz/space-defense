@@ -23,11 +23,12 @@ module.exports =    function(){
     game.input.gamepad.start();
 
     // To listen to buttons from a specific pad listen directly on that pad game.input.gamepad.padX, where X = pad 1-4
-    pad1 = game.input.gamepad.pad1;
+    //var pad1 = game.input.gamepad.pad1;
 
     
     var GameController = window.GameController = require('game-controller').GameController;
-    console.log(GameController);
+
+
     GameController.init({
         left: {
             type: 'joystick',
@@ -70,7 +71,13 @@ module.exports =    function(){
     window.explosions = game.add.group();
     explosions.createMultiple(30, 'explode');
     explosions.forEach(setupEnemy, this);
-    window.music = game.add.audio('stage-1');
+    window.music = game.add.audio('stage-1'); 
+    window.explosionsSmallest = game.add.group();
+    explosionsSmallest.createMultiple(30, 'explode-smallest');
+    explosionsSmallest.forEach(setupEnemy, this);
+    
+
+
     window.boom = game.add.audio('boom');
     window.lazer = game.add.audio('lazer');
 

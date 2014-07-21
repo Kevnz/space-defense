@@ -4,6 +4,7 @@ var index = require('./lib/home');
 var noRoute = require('./lib/static-files');
 var fighters = require('./lib/fighters');
 var bullets = require('./lib/bullets');
+var bosses = require('./lib/bosses');
 var router = new director.http.Router({
     '/': {
       get: index
@@ -13,6 +14,9 @@ var router = new director.http.Router({
     },
     '/sheets/bullets': {
       get: bullets
+    },
+    '/sheets/bosses': {
+      get: bosses
     }
 }).configure({notfound: noRoute});
 
