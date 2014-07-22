@@ -7,8 +7,8 @@ module.exports =  function () {
     this.load.atlas('bosses', 'img/enemy-bosses/enemy-bosses.png', 'sheets/bosses');
     this.load.image('ship', 'img/space_ship_base.png');
     this.load.spritesheet('explode', 'img/assets/explode.png', 128, 128);
-        this.load.spritesheet('explode-small', 'img/assets/explode-small.png', 32, 32);
-                this.load.spritesheet('explode-smallest', 'img/assets/explode-smallest.png', 16, 16);
+    this.load.spritesheet('explode-small', 'img/assets/explode-small.png', 32, 32);
+    this.load.spritesheet('explode-smallest', 'img/assets/explode-smallest.png', 16, 16);
     this.load.audio('boom', ['audio/effects/explode.wav']);
     this.load.audio('lazer', ['audio/effects/lazer.wav']);
     this.load.audio('stage-1', ['audio/background/stage-1.mp3', 'audio/background/stage-1.ogg']);

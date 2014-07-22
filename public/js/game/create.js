@@ -11,7 +11,13 @@ function setupEnemy (enemy) {
     enemy.animations.add('explode');
 
 };
+function setupEnemyBoss (enemy) {
 
+    enemy.anchor.x = 0.5;
+    enemy.anchor.y = 0.5;
+    enemy.animations.add('explode-smallest');
+
+};
 module.exports =    function(){
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -24,33 +30,35 @@ module.exports =    function(){
 
     // To listen to buttons from a specific pad listen directly on that pad game.input.gamepad.padX, where X = pad 1-4
     //var pad1 = game.input.gamepad.pad1;
+    console.log('ontouchstart' in document.documentElement);
+    if('ontouchstart' in document.documentElement) {
 
-    
-    var GameController = window.GameController = require('game-controller').GameController;
+
+        var GameController = window.GameController = require('game-controller').GameController;
 
 
-    GameController.init({
-        left: {
-            type: 'joystick',
-            joystick: {
-                touchStart: function() {
-                    // Don't need this, but the event is here if you want it.
-                },
-                touchMove: function(joystick_details) {
-                    game.input.joystickLeft = joystick_details;
-                },
-                touchEnd: function() {
-                    game.input.joystickLeft = null;
+        GameController.init({
+            left: {
+                type: 'joystick',
+                joystick: {
+                    touchStart: function() {
+                        // Don't need this, but the event is here if you want it.
+                    },
+                    touchMove: function(joystick_details) {
+                        game.input.joystickLeft = joystick_details;
+                    },
+                    touchEnd: function() {
+                        game.input.joystickLeft = null;
+                    }
                 }
+            },
+            right: {
+                // We're not using anything on the right for this demo, but you can add buttons, etc.
+                // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
+                type: 'none'
             }
-        },
-        right: {
-            // We're not using anything on the right for this demo, but you can add buttons, etc.
-            // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
-            type: 'none'
-        }
-    });
-
+        });
+    }
     window.player = require('./player')(game);
     player.init();
     var bullets = window.bullets = this.add.group();
@@ -74,7 +82,7 @@ module.exports =    function(){
     window.music = game.add.audio('stage-1'); 
     window.explosionsSmallest = game.add.group();
     explosionsSmallest.createMultiple(30, 'explode-smallest');
-    explosionsSmallest.forEach(setupEnemy, this);
+    explosionsSmallest.forEach(setupEnemyBoss, this);
     
 
 
