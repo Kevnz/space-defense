@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp browserify-prod"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
     "browserify": "^4.2.0",
     "es6ify": "^1.2.0",
     "game-controller": "0.0.1",
+    "gh-pages": "^1.0.0",
     "gulp": "^3.8.5",
     "gulp-bower": "0.0.6",
     "gulp-espower": "^0.7.1",
